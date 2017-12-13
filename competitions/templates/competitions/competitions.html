@@ -1,0 +1,9 @@
+{% extends "home/header.html" %}
+{% block content %}
+<!--     {% for post in object_list %}
+        <h5>{{ post.date|date:"Y-m-d" }}<a href="/competitions/{{post.id}}">  {{ post.title }}</a></h5>
+    {% endfor %} -->
+    {% for competition in object_list %}
+        <h5>{{ competition.title }}<a href="/competitions/{{competition.id}}">  {{ competition.title }}</a></h5>
+    {% endfor %}
+{% endblock %}
