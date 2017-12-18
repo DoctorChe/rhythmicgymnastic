@@ -12,9 +12,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Competition(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    event_place = models.CharField(max_length=200)
+    event_start = models.DateTimeField(auto_now_add=False)
+    event_end = models.DateTimeField(auto_now_add=False)
+    event_organizer = models.CharField(max_length=200)
 
     class Meta:
         ordering = ('title',)
@@ -45,6 +50,7 @@ class Group(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Gymnast(models.Model):
     group = models.ForeignKey(Group, related_name='gymnasts', on_delete=models.DO_NOTHING)
