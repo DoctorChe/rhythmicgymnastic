@@ -1,9 +1,10 @@
 {% extends "home/header.html" %}
 {% block content %}
-<!--     {% for post in object_list %}
-        <h5>{{ post.date|date:"Y-m-d" }}<a href="/competitions/{{post.id}}">  {{ post.title }}</a></h5>
-    {% endfor %} -->
+    <h3>Список соревнований по художественной гимнастике</h3>
     {% for competition in object_list %}
-        <h5><a href="/competitions/{{competition.id}}"> {{ competition.title }}</a> {{ competition.event_start|date:"Y" }} </h5>
+        <h4><a href="/competitions/{{competition.id}}"> {{ competition.title }}</a> {{ competition.start|date:"Y" }} </h4>
+        <p>Дата проведения: {{ competition.start }} - {{ competition.end }}</p>
+        <p>Место проведения: {{ competition.place }}</p>
+{#        <h6>Организатор: {{ competition.organizer }}</h6>#}
     {% endfor %}
 {% endblock %}

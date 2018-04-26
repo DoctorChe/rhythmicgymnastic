@@ -8,4 +8,6 @@ def index(request):
 def contact(request):
     return render(request, 'home/basic.html',
                   {'content':
-                       ['If you would like to contact me, please email me.', 'cool.rhythmicgymnastics@yandex.ru']})
+                        ['Все свои пожелания Вы можете отправлять на наш почтовый адрес:',
+                         'cool.rhythmicgymnastics@yandex.ru']
+                   })

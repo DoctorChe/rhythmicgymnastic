@@ -1,0 +1,60 @@
+{% extends "home/header.html" %}
+{% block content %}
+    <div class="content container">
+        <h3>{{ competition.title }}</h3>
+        <h5> Место проведения: {{ competition.place }}</h5>
+        <h6> Дата начала соревнований: {{ competition.start|date:"d E Y" }}</h6>
+        <h6> Дата окончания соревнований: {{ competition.end|date:"d E Y" }}</h6>
+    {#    <h6> Организатор: {{ competition.organizer }}</h6>#}
+
+        <table class="table_gymnast">
+            <caption>Таблица победителей</caption>
+            <tr>
+                <td>Место</td>
+                <td>Гимнастка</td>
+                <td>г.р.</td>
+                <td>Разряд</td>
+                <td>Город</td>
+                <td>Тренер</td>
+            </tr>
+            {% for gymnast in competition.gymnasts.all|dictsort:"gymnasts" %}
+{#                TODO: сделать сортировку по rank_position#}
+                <tr>
+                    <th>{{ gymnast.rank_position }}</th>
+                    <th>{{ gymnast.name }}</th>
+                    <td>{{ gymnast.year_of_birth }}</td>
+                    <td>{{ gymnast.get_category_display }}</td>
+                    <td>{{ gymnast.city }}</td>
+                    <td>{{ gymnast.coach }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <table class="table_gymnast">
+            <caption>Список участников соревнований</caption>
+            <tr>
+                <td>№</td>
+                <td>Гимнастка</td>
+                <td>г.р.</td>
+                <td>Разряд</td>
+                <td>Город</td>
+                <td>Тренер</td>
+            </tr>
+            {% for gymnast in competition.gymnasts.all|dictsort:"number" %}
+                <tr>
+                    <th>{{ gymnast.number }}</th>
+                    <th>{{ gymnast.name }}</th>
+                    <td>{{ gymnast.year_of_birth }}</td>
+                    <td>{{ gymnast.get_category_display }}</td>
+                    <td>{{ gymnast.city }}</td>
+                    <td>{{ gymnast.coach }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+{#        <div class = "container">#}
+{#            {{ competition.body|safe|linebreaks}}#}
+{#        </div>#}
+        <br><br>
+    </div>
+{% endblock %}
